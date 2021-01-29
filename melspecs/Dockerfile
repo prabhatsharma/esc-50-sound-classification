@@ -40,5 +40,5 @@ WORKDIR /soundclassification/
 COPY ./melspecs-list.py /soundclassification/
 COPY ./labels.csv /soundclassification/
 
-ENTRYPOINT ["python3", "/soundclassification/melspecs-sqs.py"]
+ENTRYPOINT ["python3", "/soundclassification/melspecs-list.py"]
 
