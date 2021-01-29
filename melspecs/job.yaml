@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: esc-50-melspecs
+  namespace: audio
+spec:
+  ttlSecondsAfterFinished: 100
+  parallelism: 2
+  template:
+    spec:
+      restartPolicy: OnFailure
+      serviceAccount: eks-esc-50
+      containers:
+      - name: esc-50-melspecs
+        image: "525158249545.dkr.ecr.us-west-2.amazonaws.com/esc-50-melspec-creator"
+        imagePullPolicy: Always
+        env:
+          - name: "SQS_QUEUE"
+            value: "esc-50-melspecs"
+          - name: "AWS_REGION"
+            value: "us-west-2"
+        resources:
+          limits:
+            memory: "20000Mi"
+            cpu: "2"
+  backoffLimit: 20

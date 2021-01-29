@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: copier
+  namespace: audio
+spec:
+  template:
+    spec:
+      serviceAccountName: audio-sa
+      containers:
+        - name: copier
+          image: public.ecr.aws/amazonlinux/amazonlinux:latest
+          command: ["/bin/sh","-c"]
+          args:
+            - yum update -y;
+              yum install git -y ;
+              yum install unzip -y ;
+              curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip" ;
+              unzip awscliv2.zip ;
+              chmod +x ./aws/install ;
+              ./aws/install ;
+              git clone https://github.com/karolpiczak/ESC-50 --depth=1;
+              cd ESC-50;
+              aws s3 cp audio s3://my-classification-audio-files/source/ --recursive;
+      restartPolicy: Never
+  backoffLimit: 4
