@@ -20,6 +20,7 @@ phases:
       - aws eks update-kubeconfig --name arm5
       - pwd
       - ls -alh
+      - ls -alh melspecs
       - kubectl delete -f melspecs/job.yml
       - kubectl apply -f melspecs/job.yml
 
