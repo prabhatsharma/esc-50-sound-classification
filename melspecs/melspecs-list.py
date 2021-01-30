@@ -158,6 +158,7 @@ def useCSV(csvPath='/opt/ml/processing/input_data/labels.csv'):
     label_df = pd.read_csv(csvPath)
     for index, row in label_df.iterrows():
         try:
+            print("reading file: ", row)
             createmelspecs(BUCKET, row['filename'])
         except Exception as e:
             print("file not found may be")
