@@ -18,9 +18,6 @@ phases:
       - docker push 525158249545.dkr.ecr.us-west-2.amazonaws.com/esc-50-melspec-creator:latest
       - export AWS_DEFAULT_REGION=us-west-2
       - aws eks update-kubeconfig --name arm5
-      - pwd
-      - ls -alh
-      - ls -alh melspecs
-      - kubectl delete -f melspecs/job.yml
-      - kubectl apply -f melspecs/job.yml
+      - kubectl delete -f melspecs/job.yaml
+      - kubectl apply -f melspecs/job.yaml
 
