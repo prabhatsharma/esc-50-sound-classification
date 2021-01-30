@@ -19,6 +19,7 @@ phases:
       - export AWS_DEFAULT_REGION=us-west-2
       - aws eks update-kubeconfig --name arm5
       - pwd
+      - ls -alh
       - kubectl delete -f melspecs/job.yml
       - kubectl apply -f melspecs/job.yml
 
