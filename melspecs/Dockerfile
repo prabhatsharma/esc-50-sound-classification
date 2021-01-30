@@ -31,7 +31,7 @@ RUN conda install llvmlite
 
 RUN pip3 install matplotlib librosa mutagen noisereduce statistics boto3 tqdm scipy numpy pandas sklearn 
 
-# RUN pip3 install ipython
+RUN pip3 install ipython
 
 
 
