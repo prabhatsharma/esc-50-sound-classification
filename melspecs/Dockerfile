@@ -37,8 +37,8 @@ RUN pip3 install ipython
 
 WORKDIR /soundclassification/
 
-COPY ./melspecs-list.py /soundclassification/melspecs/
-COPY ./labels.csv /soundclassification/melspecs/
+COPY ./melspecs-list.py /soundclassification/
+COPY ./labels.csv /soundclassification/
 
-ENTRYPOINT ["python3", "/soundclassification/melspecs/melspecs-list.py"]
+ENTRYPOINT ["python3", "/soundclassification/melspecs-list.py"]
 
