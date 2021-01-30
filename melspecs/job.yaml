@@ -5,22 +5,22 @@ metadata:
   namespace: audio
 spec:
   ttlSecondsAfterFinished: 100
-  parallelism: 2
+  parallelism: 1
   template:
     spec:
       restartPolicy: OnFailure
-      serviceAccount: eks-esc-50
+      serviceAccount: audio-sa
       containers:
       - name: esc-50-melspecs
         image: "525158249545.dkr.ecr.us-west-2.amazonaws.com/esc-50-melspec-creator"
         imagePullPolicy: Always
         env:
-          - name: "SQS_QUEUE"
-            value: "esc-50-melspecs"
           - name: "AWS_REGION"
             value: "us-west-2"
-        resources:
-          limits:
-            memory: "20000Mi"
-            cpu: "2"
+        # resources:
+        #   limits:
+        #     memory: "2000Mi"
+        #     cpu: "2"
+      nodeSelector:
+        kubernetes.io/arch: amd64
   backoffLimit: 20

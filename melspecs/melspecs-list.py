@@ -208,6 +208,6 @@ if __name__=="__main__":
     # createmelspecs(args.bucket, args.objpath)
 
     # useSQS()
-    useCSV()
+    useCSV("./labels.csv")
 
     
