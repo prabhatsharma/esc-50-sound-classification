@@ -158,8 +158,8 @@ def useCSV(csvPath='/opt/ml/processing/input_data/labels.csv'):
     label_df = pd.read_csv(csvPath)
     for index, row in label_df.iterrows():
         try:
-            print("reading file: ", row)
-            createmelspecs(BUCKET, row['filename'])
+            print("reading file: ", BUCKET + "/source/" + row['filename'])
+            createmelspecs(BUCKET, "source/" + row['filename'])
         except Exception as e:
             print("file not found may be")
     return
@@ -209,6 +209,6 @@ if __name__=="__main__":
     # createmelspecs(args.bucket, args.objpath)
 
     # useSQS()
-    useCSV("./labels.csv")
+    useCSV("melspecs/labels.csv")
 
     
