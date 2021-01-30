@@ -16,4 +16,8 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push 525158249545.dkr.ecr.us-west-2.amazonaws.com/esc-50-melspec-creator:latest
+      - export AWS_DEFAULT_REGION=us-west-2
+      - aws eks update-kubeconfig --name arm5
+      - kubectl delete -f job.yml
+      - kubectl apply -f job.yml
 
